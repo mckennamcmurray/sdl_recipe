@@ -12,7 +12,6 @@ bp = Blueprint("cookbook", __name__)
 # main route to show all posts
 @bp.route("/")
 def index():
-    """Show all the posts, most recent first."""
     db = get_db()
     query = """SELECT post.id, title, body, created, author_id, username
             FROM post JOIN user ON post.author_id = user.id
@@ -20,18 +19,7 @@ def index():
     posts = db.execute(query).fetchall() # will be a list of all Rows
     return render_template("cookbook/index.html", posts=posts)
 
-
 def get_my_post(id):
-    """Get a post and its author by id.
-
-    Checks that the id exists and optionally that the current user is
-    the author.
-
-    :param id: id of post to get
-    :return: the post with author information
-    :raise 404: if a post with the given id doesn't exist
-    :raise 403: if the current user isn't the author
-    """
     db = get_db()
     query = """SELECT post.id, title, body, created, author_id, username
             FROM post JOIN user ON post.author_id = user.id
@@ -45,3 +33,25 @@ def get_my_post(id):
         abort(403) # Forbidden
 
     return post
+
+@bp.route("/add", methods=("GET", "POST"))
+@login_required
+def create():
+    if request.method == "POST":
+        title = request.form["title"]
+        body = request.form["body"]
+        error = None
+
+        if not title:
+            error = "Title is required."
+
+        if error is not None:
+            flash(error)
+        else:
+            db = get_db()
+            query = "INSERT INTO post (title, body, author_id) VALUES (?, ?, ?)"
+            db.execute(query, (title, body, g.user["id"]))
+            db.commit()
+            #return redirect(url_for("cookbook.index"))
+
+    return render_template("cookbook/add.html")

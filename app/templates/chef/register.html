@@ -1,19 +1,15 @@
-{% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Welcome! Register to become a Chef{% endblock %}</h1>
-{% endblock %}
+  <h1 class="center" > Welcome! Register to become a Chef</h1>
 
-{% block content %}
-  <form method="post">
-  	<label for="firstname">firstname</label>
-    <input name="firstname" id="firstname" required>
-    <label for="lastname">lastname</label>
-    <input name="lastname" id="lastname" required>
+  <form class="center" method="post">
+    <label for="firstname">Firstname</label>
+    <input name="firstname" id="firstname" required><br></br>
+    <label for="lastname">Lastname</label>
+    <input name="lastname" id="lastname" required><br></br>
     <label for="username">Username</label>
-    <input name="username" id="username" required>
+    <input name="username" id="username" required><br></br>
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
+    <input type="password" name="password" id="password" required><br></br>
     <input type="submit" value="Register">
   </form>
-{% endblock %}
+

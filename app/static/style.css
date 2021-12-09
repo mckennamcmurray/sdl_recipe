@@ -3,7 +3,36 @@ body{
   font-family: courier;
   color:#d3d8e2;
 }
-
 .center{
   text-align: center;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: white;
+  color: #d3d8e2;
+  font-size: 16px;
+  border: none;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #d3d8e2;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #d3d8e2;}
+
+table, th, td {
+  border: 1px solid #F08080;
+  background-color:#A6A969;
 }
