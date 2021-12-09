@@ -35,9 +35,9 @@ def create_app(test_config=None):
 
     # apply the blueprints to the app
     # tell the app that the routes are in multiple files
-    from app import auth, blog
-    app.register_blueprint(user.bp)
-    app.register_blueprint(recipes.bp)
+    from app import chef
+    app.register_blueprint(chef.bp)
+
 
     # load the index from blog as the main route page
     # since that rule isn't defined here, need to make the app aware of it
