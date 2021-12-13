@@ -34,6 +34,20 @@ def close_db(e=None):
 def init_db():
     """Clear existing data and create new tables."""
     db = get_db()
+    query_table1 =  """CREATE TABLE IF NOT EXISTS cooktimes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    cooktime TEXT UNIQUE NOT NULL,
+    ); 
+    """
+    db.execute(query_table1)
+
+    query_insert1 = """INSERT INTO cooktimes
+                          (cooktime) 
+                           VALUES 
+                          (less than five minutes)"""
+
+    db.execute(query_insert1)
+
 
     # read from the schema to reset & create the tables
     with current_app.open_resource("schema.sql") as f:

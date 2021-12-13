@@ -41,6 +41,6 @@ def create_app(test_config=None):
 
     # load the index from blog as the main route page
     # since that rule isn't defined here, need to make the app aware of it
-    app.add_url_rule('/', 'index')
+    app.add_url_rule('/', 'chef.login')
 
     return app

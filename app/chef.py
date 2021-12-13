@@ -102,7 +102,7 @@ def login():
 
         flash(error)
 
-    return render_template("chef/login.html")
+    return render_template("cookbook/add.html")
 
 
 @bp.route("/logout")
