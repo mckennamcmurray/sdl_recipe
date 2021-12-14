@@ -75,6 +75,7 @@ def create():
             db.execute(query, (title, body, g.user["id"], ctime))
             db.commit()
             return redirect(url_for("cookbook.index"))
+            #return render_template("search/searchbar.html")
     else: # GET REQEUST
         db = get_db()
         cooktime_list = db.execute("SELECT * FROM cooktime order by cooktime_id").fetchall()
