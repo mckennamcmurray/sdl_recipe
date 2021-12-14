@@ -1,0 +1,23 @@
+
+  <h1>Posts</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('cookbook.create') }}">New</a>
+  {% endif %}
+
+  {% for recipe in recipes %}
+    <article class="recipe">
+      <header>
+        <div>
+          <h1>{{ recipe['recipe_name'] }}</h1>
+          <div class="about">by {{ recipe['username'] }} on {{ recipe['create_date'].strftime('%Y-%m-%d') }}</div>
+        </div>
+        {% if g.user['id'] == recipe['author_id'] %}
+          <a class="action" href="{{ url_for('cookbook.update', id=recipe['id']) }}">Edit</a>
+        {% endif %}
+      </header>
+      <p class="body">{{ recipe['body'] }}</p>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}

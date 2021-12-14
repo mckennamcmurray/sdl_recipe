@@ -1,50 +1,20 @@
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
 <h1>Add to the Cookbook</h1>
 
 
   <form method="post">
     <label for="title">Recipe Name</label>
     <input name="title" id="title" value="{{ request.form['title'] }}" required><br></br>
-<div class="dropdown">
-  <button class="dropbtn">Cook Time</button>
-  <div class="dropdown-content">
-    <p>chosen time</p>
-    <a href="#">5 mins or less</a>
-    <a href="#">5-10 mins</a>
-    <a href="#">10-20 mins </a>
-    <a href="#">20-30 mins</a>
-    <a href="#">40-50 mins</a>
-    <a href="#">1hr-1.5hrs</a>
-    <a href="#">2hrs or more</a>
-  </div>
-</div>
-<br></br>
-<div class="dropdown">
-  <button onclick="Py Function" class="dropbtn">Ingredients</button>
-  <div class="dropdown-content">
-    <input type="text" placeholder="Search..." id="searchInput" onkeyup="Py Fliter/Search Function()">
-    <a href="#ing1">Apples</a>
-    <a href="#ing2">Butter</a>
-    <a href="#ing3">Chicken</a>
-    <a href="#ing4">Dates</a>
-    <a href="#ing5">Eggplant</a>
-    <a href="#ing6">Add Own</a>
-  </div>
-</div>
-  <table style="width:100%">
-  <tr>
-    <th>Ingredient</th>
-    <th>Amount</th> 
-  </tr>
-  <tr>
-    <td> Chosen Food Item #1</td>
-    <td input type="text" ></td> 
-  </tr>
-  <tr>
-    <td> Chosen Food Item #2</td>
-    <td input type="text" ></td 
-  </tr>
-</table>
     <label for="body">Instructions</label>
     <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
     <input type="submit" value="Save">
+<fieldset> {% for c in cooktime_list %}
+  <p><input type="checkbox" name="{{c['cooktime_id'] }}" value="{{c['cooktime_id'] }}"> {{c['cooktime']}}</p>
+{% endfor %}</fieldset>
+   
   </form>
+

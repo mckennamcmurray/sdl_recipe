@@ -7,6 +7,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from app.db import get_db
 
+
 # every auth route has the prefix below
 bp = Blueprint("chef", __name__, url_prefix="/chef")
 
@@ -95,14 +96,15 @@ def login():
             error = "Incorrect password."
 
         if error is None:
+            print("something out")
             # store the user id in a new session and return to the index
             session.clear()
             session["user_id"] = user["id"]
-            return redirect(url_for("cookbook.index"))
+            return redirect(url_for("cookbook.create"))
 
         flash(error)
 
-    return render_template("cookbook/add.html")
+    return render_template("chef/login.html")
 
 
 @bp.route("/logout")

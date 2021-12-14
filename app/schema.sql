@@ -20,10 +20,13 @@ CREATE TABLE user (
 );
 
 CREATE TABLE recipe (
-  recipe_id INTEGER PRIMARY KEY AUTOINCREMENT,
-  recipe_name TEXT UNIQUE NOT NULL,
-  author_id TEXT UNIQUE NOT NULL,
-  cooktime_id TEXT UNIQUE NOT NULL
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  author_id INTEGER NOT NULL,
+  create_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  recipe_name TEXT NOT NULL,
+  cooktime_id TEXT NOT NULL,
+  instructions TEXT NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES user (id)
 );
 
 CREATE TABLE ingredients (
