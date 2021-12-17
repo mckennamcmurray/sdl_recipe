@@ -6,10 +6,27 @@
 
 	  <h1>Search Here</h1>
 
-	 <form method="post">
-    <label for="title">Search</label>
-    <input name="title" id="title" value="{{ request.form['title'] }}" required>
-    <input type="submit" value="Save">
-      </form>
+	 <form  method="post">
+    <label for="form_1">Search</label>
+    <input name="form_1" id="form_1" value="{{ request.form['form_1'] }}" >
+     <select name="filter" method="GET" action="/">
+  <option value="{{filters[0]}}" selected>{{filters[0]}}</option>
+  {% for filter in filters[1:] %}
+    <option value="{{filter}}">{{filter}}</option>
+  {% endfor %}
+</select>
+<br></br>
+<label for="form_2">Search</label>
+    <input name="form_2" id="form_2" value="{{ request.form['form_2'] }}" >
+     <select name="filter_2" method="GET" action="/">
+  <option value="{{filters[0]}}" selected>{{filters[0]}}</option>
+  {% for filter in filters[1:] %}
+    <option value="{{filter}}">{{filter}}</option>
+  {% endfor %}
+</select>
+<br></br>
+<input type="submit" value="Add Tag">
+</form>
 </body>
+
 
